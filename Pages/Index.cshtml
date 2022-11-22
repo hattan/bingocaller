@@ -1,0 +1,69 @@
+﻿@page
+
+@{
+    var count=1;
+
+}
+
+<table class="table" id="bingo">
+    <tr>
+        <td class="letter" >B</td>
+        @{
+            while(count%15 != 0){
+                <td id="number-@count" class="number">@count</td>   
+                count++;          
+            }
+                <td id="number-@count" class="number">@count</td>      
+                count++;    
+          }
+    </tr>
+    <tr>
+        <td class="letter">I</td>
+        @{
+            while(count%15 != 0){
+                 <td id="number-@count" class="number">@count</td>     
+                count++;          
+            }
+                 <td id="number-@count" class="number">@count</td>      
+                count++;    
+          }    
+        
+    </tr>
+    <tr>
+        <td class="letter">N</td>
+        @{
+            while(count%15 != 0){
+                  <td id="number-@count" class="number">@count</td>        
+                count++;          
+            }
+                <td id="number-@count" class="number">@count</td>     
+                count++;    
+          }   
+       
+    </tr>
+    <tr>
+        <td class="letter">G</td>
+        @{
+            while(count%15 != 0){
+                  <td id="number-@count" class="number">@count</td>     
+                count++;          
+            }
+               <td id="number-@count" class="number">@count</td>     
+                count++;    
+          }
+    </tr>
+    <tr>
+        <td class="letter">O</td>
+        @{
+            while(count%15 != 0){
+               <td id="number-@count" class="number">@count</td>   
+                count++;          
+            }
+                <td id="number-@count" class="number">@count</td>     
+                count++;    
+          }
+        </tr>
+</table>
+
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
