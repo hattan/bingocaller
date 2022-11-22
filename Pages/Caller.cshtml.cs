@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
-using System;
 
-namespace RazorPagesIntro.Pages
+namespace BingoCaller.Pages
 {
     public class CallerModel : PageModel
     {

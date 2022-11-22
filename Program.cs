@@ -1,4 +1,4 @@
-using SignalRChat.Hubs;
+using BingoCaller.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
