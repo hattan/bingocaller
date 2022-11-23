@@ -13,7 +13,8 @@ Deployed Version : https://stereobingo.azurewebsites.net/
 
 - Create a dev certificate `dotnet dev-certs https`
 - Start the local server `dotnet watch run --project BingoCaller.csproj`
-  Note: Hot reload will be unabled and update the page automatically when a client side change is applied in vscode.
+
+  Note: Hot reload will be enabled and update the page automatically when a client side change is applied in vscode.
 
 ## Using the Site
 
