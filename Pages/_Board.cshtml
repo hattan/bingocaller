@@ -1,0 +1,34 @@
+@{
+    var count=1;
+    void GenerateNumbers()
+    {
+        while(count%15 != 0)
+        {
+            <td id="number-@count" class="number" data-value="@count">@count</td>   
+            count++;          
+        }
+        <td id="number-@count" class="number" data-value="@count">@count</td>     
+        count++;    
+    }
+}
+
+<table class="table" id="bingo">
+    <tr>
+        <td class="letter" >B</td> @{GenerateNumbers();}
+    </tr>
+    <tr>
+        <td class="letter">I</td> @{GenerateNumbers();}   
+    </tr>
+
+    <tr>
+        <td class="letter">N</td> @{GenerateNumbers();} 
+    </tr>
+    <tr>
+        <td class="letter">G</td> @{GenerateNumbers();}
+    </tr>
+    <tr>
+        <td class="letter">O</td> @{GenerateNumbers();}
+    </tr>
+</table>
+
+

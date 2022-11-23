@@ -388,7 +388,7 @@ function isArrayBuffer(val) {
             (val.constructor && val.constructor.name === "ArrayBuffer"));
 }
 /** @private */
-async function sendMessage(logger, transportName, httpClient, url, content, options) {
+async function CallNumber(logger, transportName, httpClient, url, content, options) {
     const headers = {};
     const [name, value] = getUserAgentHeader();
     headers[name] = value;
@@ -1092,7 +1092,7 @@ class HubConnection {
                 version: this._protocol.version,
             };
             this._logger.log(LogLevel.Debug, "Sending handshake request.");
-            await this._sendMessage(this._handshakeProtocol.writeHandshakeRequest(handshakeRequest));
+            await this._CallNumber(this._handshakeProtocol.writeHandshakeRequest(handshakeRequest));
             this._logger.log(LogLevel.Information, `Using HubProtocol '${this._protocol.name}'.`);
             // defensively cleanup timeout in case we receive a message from the server before we finish start
             this._cleanupTimeout();
@@ -1110,7 +1110,7 @@ class HubConnection {
                 throw this._stopDuringStartError;
             }
             if (!this.connection.features.inherentKeepAlive) {
-                await this._sendMessage(this._cachedPingMessage);
+                await this._CallNumber(this._cachedPingMessage);
             }
         }
         catch (e) {
@@ -1217,7 +1217,7 @@ class HubConnection {
         this._launchStreams(streams, promiseQueue);
         return subject;
     }
-    _sendMessage(message) {
+    _CallNumber(message) {
         this._resetKeepAliveInterval();
         return this.connection.send(message);
     }
@@ -1226,7 +1226,7 @@ class HubConnection {
      * @param message The js object to serialize and send.
      */
     _sendWithProtocol(message) {
-        return this._sendMessage(this._protocol.writeMessage(message));
+        return this._CallNumber(this._protocol.writeMessage(message));
     }
     /** Invokes a hub method on the server using the specified name and arguments. Does not wait for a response from the receiver.
      *
@@ -1459,7 +1459,7 @@ class HubConnection {
                 this._pingServerHandle = setTimeout(async () => {
                     if (this._connectionState === HubConnectionState.Connected) {
                         try {
-                            await this._sendMessage(this._cachedPingMessage);
+                            await this._CallNumber(this._cachedPingMessage);
                         }
                         catch {
                             // We don't care about the error. It should be seen elsewhere in the client.
@@ -2084,7 +2084,7 @@ class LongPollingTransport {
         if (!this._running) {
             return Promise.reject(new Error("Cannot send until the transport is connected"));
         }
-        return sendMessage(this._logger, "LongPolling", this._httpClient, this._url, data, this._options);
+        return CallNumber(this._logger, "LongPolling", this._httpClient, this._url, data, this._options);
     }
     async stop() {
         this._logger.log(LogLevel.Trace, "(LongPolling transport) Stopping polling.");
@@ -2212,7 +2212,7 @@ class ServerSentEventsTransport {
         if (!this._eventSource) {
             return Promise.reject(new Error("Cannot send until the transport is connected"));
         }
-        return sendMessage(this._logger, "SSE", this._httpClient, this._url, data, this._options);
+        return CallNumber(this._logger, "SSE", this._httpClient, this._url, data, this._options);
     }
     stop() {
         this._close();

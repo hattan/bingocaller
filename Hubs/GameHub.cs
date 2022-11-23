@@ -5,14 +5,14 @@ namespace BingoCaller.Hubs
 {
     public class ChatHub : Hub
     {
-        public async Task SendMessage(string number, string status)
+        public async Task CallNumber(string number, string status)
         {
             Counter.Add(new Number
             {
                 Value = int.Parse(number),
                 Status = status == "true"
             });
-            await Clients.All.SendAsync("ReceiveMessage", number, status);
+            await Clients.All.SendAsync("NumberCalled", number, status);
         }
 
         public async Task NewGame()
@@ -25,7 +25,7 @@ namespace BingoCaller.Hubs
         {
             foreach (var number in Counter.Get())
             {
-                await Clients.All.SendAsync("ReceiveMessage", number.Value.ToString(), number.Status.ToString());
+                await Clients.All.SendAsync("NumberCalled", number.Value.ToString(), number.Status.ToString());
             }
             await base.OnConnectedAsync();
         }

@@ -1,85 +1,41 @@
 @page
-@using BingoCaller.Pages
 @model CallerModel
-@{
-    var count=1;
-
-}
-<style>
-
-td{
-     cursor:pointer;
-}
-</style>
-
-
 
 @if(Model.LoggedIn) {
-<H1>Caller!</H1>
-<button type="button" class="btn btn-primary" onclick="newGame()">New Game</button>
-<br/><br/>
-<table class="table" id="bingo">
-    <tr>
-        <td class="letter" >B</td>
-        @{
-            while(count%15 != 0){
-                <td id="number-@count" class="number" onclick="numberClick('@count')">@count</td>   
-                count++;          
-            }
-                <td id="number-@count" class="number" onclick="numberClick('@count')">@count</td>     
-                count++;    
-          }
-    </tr>
-    <tr>
-        <td class="letter">I</td>
-        @{
-            while(count%15 != 0){
-                <td id="number-@count" class="number" onclick="numberClick('@count')">@count</td>   
-                count++;          
-            }
-                <td id="number-@count" class="number" onclick="numberClick('@count')">@count</td>    
-                count++;    
-          }    
-        
-    </tr>
-    <tr>
-        <td class="letter">N</td>
-        @{
-            while(count%15 != 0){
-                 <td id="number-@count" class="number" onclick="numberClick('@count')">@count</td>      
-                count++;          
-            }
-                <td id="number-@count" class="number" onclick="numberClick('@count')">@count</td>      
-                count++;    
-          }   
-       
-    </tr>
-    <tr>
-        <td class="letter">G</td>
-        @{
-            while(count%15 != 0){
-                 <td id="number-@count" class="number" onclick="numberClick('@count')">@count</td>   
-                count++;          
-            }
-                <td id="number-@count" class="number" onclick="numberClick('@count')">@count</td>     
-                count++;    
-          }
-    </tr>
-    <tr>
-        <td class="letter">O</td>
-        @{
-            while(count%15 != 0){
-                <td id="number-@count" class="number" onclick="numberClick('@count')">@count</td>   
-                count++;          
-            }
-                <td id="number-@count" class="number" onclick="numberClick('@count')">@count</td>    
-                count++;    
-          }
-        </tr>
-</table>
+    <style>
+        td{
+            cursor:pointer;
+        }
+    </style>
 
-<script src="~/js/signalr/dist/browser/signalr.js"></script>
-<script src="~/js/caller.js"></script>
+    <H1>Caller!</H1>
+    <button type="button" class="btn btn-primary newGame" id="newGame">New Game</button>
+    <partial name="_Board"/>
+
+    @section Scripts {
+        <script src="~/js/board.js"></script>
+        <script>
+            const numbers = document.querySelectorAll("td.number");
+            numbers.forEach(function(number) {
+                number.addEventListener("click", function() {
+                    const value = number.getAttribute("data-value");
+                    const selected=(number.classList.contains("selected")).toString();
+
+                    console.log(`number clicked: ${value} - selected: ${selected}`);
+                    connection.invoke("CallNumber", value,selected).catch(function (err) {
+                        return console.error(err.toString());
+                    });
+                });
+            });
+
+            const newGame = document.getElementById("newGame");
+            newGame.addEventListener("click",function(){
+                connection.invoke("NewGame").catch(function (err) {
+                    return console.error(err.toString());
+                });
+            })
+        </script>
+    }
 }
 else{
     <style>
@@ -88,12 +44,14 @@ else{
         }
     </style>
    <form method="post">
-    <h1> Please Login</h1>
-    <div class="loginForm">Username:</div> <input type="text" name="username"/> 
-    <br/><br/>
-     <div class="loginForm">Password:</div> <input type="password" name="password"/>
-     <br/><br/>
-     <input type="submit" name="submit" value="submit"/>
+        <h1> Please Login</h1>
+        <div class="loginForm">Username:</div> <input type="text" name="username"/> 
+        <br/><br/>
+        
+        <div class="loginForm">Password:</div> <input type="password" name="password"/>
+        <br/><br/>
+        
+        <input type="submit" name="submit" value="submit"/>
    </form>
 }
 
