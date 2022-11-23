@@ -2,7 +2,7 @@
 
 A web application to help Bingo Callers and participants keep track of numbers!
 
-Live Version : https://stereobingo.azurewebsites.net/
+Deployed Version : https://stereobingo.azurewebsites.net/
 
 ## Requirements:
 
