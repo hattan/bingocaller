@@ -1,11 +1,12 @@
 using BingoCaller.Hubs;
+using BingoCaller.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddSignalR();
-
+builder.Services.AddSingleton<ICounter,Counter>();
 
 var app = builder.Build();
 
@@ -25,6 +26,6 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
-app.MapHub<ChatHub>("/bingoHub");
+app.MapHub<GameHub>("/bingoHub");
 
 app.Run();

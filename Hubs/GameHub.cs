@@ -3,11 +3,16 @@ using BingoCaller.Data;
 
 namespace BingoCaller.Hubs
 {
-    public class ChatHub : Hub
+    public class GameHub : Hub
     {
+        private ICounter _counter;
+        public GameHub(ICounter counter)
+        {
+            _counter=counter;
+        }
         public async Task CallNumber(string number, string status)
         {
-            Counter.Add(new Number
+            _counter.Add(new Number
             {
                 Value = int.Parse(number),
                 Status = status == "true"
@@ -17,13 +22,13 @@ namespace BingoCaller.Hubs
 
         public async Task NewGame()
         {
-            Counter.Clear();
+            _counter.Clear();
             await Clients.All.SendAsync("NewGame");
         }
 
         public override async Task OnConnectedAsync()
         {
-            foreach (var number in Counter.Get())
+            foreach (var number in _counter.Get())
             {
                 await Clients.All.SendAsync("NumberCalled", number.Value.ToString(), number.Status.ToString());
             }

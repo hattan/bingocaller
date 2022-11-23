@@ -2,22 +2,25 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace BingoCaller.Data
 {
-    public class Counter
+    public class Counter : ICounter
     {
-        public static List<Number> numbers = new List<Number>();
-        public static void Add(Number num)
+        public List<Number> numbers = new List<Number>();
+        public void Add(Number num)
         {
-            numbers.Add(num);
+             numbers.Add(num);
         }
-        public static void Clear()
+
+        public void Clear()
         {
             numbers.Clear();
         }
-        public static int Count()
+
+        public int Count()
         {
-            return numbers.Count();
+             return numbers.Count();
         }
-        public static List<Number> Get()
+
+        public List<Number> Get()
         {
             return numbers;
         }
