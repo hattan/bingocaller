@@ -1,0 +1,43 @@
+@page
+@model HistoryModel
+
+@{
+  string GetLetter(int number){
+    if(number <=15){
+      return "B";
+    }
+    else if(number>15 && number <= 30){
+      return "I";
+    } 
+    else if(number>30 && number <= 45){
+      return "N";
+    }
+     else if(number>45 && number <= 60){
+      return "G";
+     }
+     else if(number>60 && number <= 75){
+      return "O";
+     }
+     return "";
+  }
+}
+
+Previously called Number in this game:
+
+<style>
+  .history-item{
+    font-size:30px;
+  }
+  .history-letter{
+    color:#7E57C2;
+  }
+</style>
+<ul class="list-group">
+  @foreach(var number in Model.Numbers){
+    <li class="list-group-item history-item"> 
+      <span class="history-letter">@GetLetter(number.Value)</span> 
+      <span class="history-value">@number.Value</span> </li>
+  }
+</ul>
+
+Note: This page only contains a history of numbers for this game, not subsequent games!
