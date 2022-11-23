@@ -2,6 +2,8 @@
 
 A web application to help Bingo Callers and participants keep track of numbers!
 
+Live Version : https://stereobingo.azurewebsites.net/
+
 ## Requirements:
 
 - This app can be run via a [Dev Container](https://code.visualstudio.com/docs/devcontainers/containers)
