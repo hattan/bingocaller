@@ -22,22 +22,47 @@
   }
 }
 
-Previously called Number in this game:
-
 <style>
-  .history-item{
-    font-size:30px;
+  .history-item {
+    font-size: 30px;
   }
-  .history-letter{
-    color:#7E57C2;
+
+  .history-letter {
+    font-weight: bold;
+  }
+
+  .history-letter-B {
+    color: blue;
+  }
+
+  .history-letter-I {
+    color: red;
+  }
+
+  .history-letter-N {
+    color: gold;
+  }
+
+  .history-letter-G {
+    color: green;
+  }
+
+  .history-letter-O {
+    color: purple;
   }
 </style>
-<ul class="list-group">
+
+<h1>History</h1>
+
+<p>Previously called numbers in this game:</p>
+
+<ul class="list-group mb-4">
   @foreach(var number in Model.Numbers){
     <li class="list-group-item history-item"> 
-      <span class="history-letter">@GetLetter(number.Value)</span> 
-      <span class="history-value">@number.Value</span> </li>
+      <span class="history-letter history-letter-@GetLetter(number.Value)">@GetLetter(number.Value)</span> 
+      <span class="history-value">@number.Value</span>
+    </li>
   }
 </ul>
 
-Note: This page only contains a history of numbers for this game, not subsequent games!
+<div class="small">Note: This history is <em>only</em> for the current game, not previous games!</div>

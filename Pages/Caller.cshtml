@@ -3,19 +3,26 @@
 
 @if(Model.LoggedIn) {
     <style>
-        td{
-            cursor:pointer;
+        .number {
+            cursor: pointer;
         }
     </style>
 
-    <H1>Caller!</H1>
-    <button type="button" class="btn btn-primary newGame" id="newGame">New Game</button>
+    <div class="row align-items-center mb-4">
+        <div class="col">
+            <h1 class="m-0">Caller!</h1>
+        </div>
+        <div class="col text-end">
+            <button type="button" class="btn btn-primary" id="newGame">New Game</button>
+        </div>
+    </div>
+
     <partial name="_Board"/>
 
     @section Scripts {
         <script src="~/js/board.js"></script>
         <script>
-            const numbers = document.querySelectorAll("td.number");
+            const numbers = document.querySelectorAll(".number");
             numbers.forEach(function(number) {
                 number.addEventListener("click", function() {
                     const value = number.getAttribute("data-value");
@@ -38,20 +45,19 @@
     }
 }
 else{
-    <style>
-        .loginForm{
-            width:20px;
-        }
-    </style>
    <form method="post">
-        <h1> Please Login</h1>
-        <div class="loginForm">Username:</div> <input type="text" name="username"/> 
-        <br/><br/>
+        <h1>Caller Log In</h1>
+
+        <div class="mb-3">
+            <label class="form-label" for="username">Username</label>
+            <input class="form-control" type="text" name="username" id="username"/> 
+        </div>
         
-        <div class="loginForm">Password:</div> <input type="password" name="password"/>
-        <br/><br/>
+        <div class="mb-3">
+            <label class="form-label" for="password">Password</label>
+            <input class="form-control" type="password" name="password" id="password"/>
+        </div>
         
-        <input type="submit" name="submit" value="submit"/>
+        <input class="btn btn-primary" type="submit" name="submit" value="Log In"/>
    </form>
 }
-

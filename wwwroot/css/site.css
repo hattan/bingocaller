@@ -2,12 +2,6 @@ html {
   font-size: 14px;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
 html {
   position: relative;
   min-height: 100%;
@@ -17,30 +11,31 @@ body {
   margin-bottom: 60px;
 }
 
-.container{
-  height:100%;
+.navbar {
+  background-color: #DEF4FF;
 }
 
-table, th, td {
-  border: 1px solid;
-  font-size:20px;
-}
-.letter{
-    font-weight:bold;
-}
-td{
-    height:100px;
-    text-align: center;
-     vertical-align: middle;
-}
-.selected{
-   background-color: #DBF9FC !important;
-}
-.letter{
-     background-color: #F7DC6F !important;
-     color:#717D7E;
+.offcanvas {
+  max-width: 85%;
 }
 
-.newGame{
-  margin-bottom:20px;
+.number {
+  transition: all 0.3s;
+}
+
+.number.selected {
+   background-color: #1EA11C;
+   color: #FFFFFF;
+}
+
+@media (min-width: 576px) {
+  .offcanvas {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
 }

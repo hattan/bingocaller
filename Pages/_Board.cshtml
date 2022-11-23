@@ -4,31 +4,35 @@
     {
         while(count%15 != 0)
         {
-            <td id="number-@count" class="number" data-value="@count">@count</td>   
+            <div id="number-@count" class="border number p-2" data-value="@count">@count</div>   
             count++;          
         }
-        <td id="number-@count" class="number" data-value="@count">@count</td>     
+        <div id="number-@count" class="border number p-2" data-value="@count">@count</div>     
         count++;    
     }
 }
 
-<table class="table" id="bingo">
-    <tr>
-        <td class="letter" >B</td> @{GenerateNumbers();}
-    </tr>
-    <tr>
-        <td class="letter">I</td> @{GenerateNumbers();}   
-    </tr>
-
-    <tr>
-        <td class="letter">N</td> @{GenerateNumbers();} 
-    </tr>
-    <tr>
-        <td class="letter">G</td> @{GenerateNumbers();}
-    </tr>
-    <tr>
-        <td class="letter">O</td> @{GenerateNumbers();}
-    </tr>
-</table>
-
-
+<div id="bingo-board">
+    <div class="row row-cols-5 text-center g-2">
+        <div class="col">
+            <div class="h1">B</div>
+            <div>@{GenerateNumbers();}</div>
+        </div>
+        <div class="col">
+            <div class="h1">I</div>
+            <div>@{GenerateNumbers();}</div>
+        </div>
+        <div class="col">
+            <div class="h1">N</div>
+            <div>@{GenerateNumbers();}</div>
+        </div>
+        <div class="col">
+            <div class="h1">G</div>
+            <div>@{GenerateNumbers();}</div>
+        </div>
+        <div class="col">
+            <div class="h1">O</div>
+            <div>@{GenerateNumbers();}</div>
+        </div>
+    </div>
+</div>
