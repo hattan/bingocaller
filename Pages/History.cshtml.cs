@@ -13,7 +13,8 @@ namespace BingoCaller.Pages
         {
             _logger = logger;
             _counter = counter;
-            Numbers = _counter.Get();
+            Numbers = _counter.Get().Where(n=>n.Status == false).ToList();
+            Numbers.Sort();
         }
 
     }

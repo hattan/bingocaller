@@ -9,11 +9,11 @@ function clearBoard(){
 }
 
 function numberCalled(number, status) {
-    console.log("MSG: NumberCalled");
+    console.log(`MSG: NumberCalled ${number} - ${status}`);
     let id=`number-${number}`
     let cell=document.getElementById(id);
     let selectedClass="selected";
-    if(status == "true"){
+    if(status.toLowerCase() == "true"){
         cell.classList.remove(selectedClass);
     }
     else{
