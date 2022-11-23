@@ -9,7 +9,12 @@ namespace BingoCaller.Data
         {
              numbers.Add(num);
         }
-
+        public void Remove(Number num){
+            var numbersToRemove = numbers.Where(n=>n.Value == num.Value);
+            foreach(var number in numbersToRemove){
+                numbers.Remove(number);
+            }
+        }
         public void Clear()
         {
             numbers.Clear();
