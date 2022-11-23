@@ -1,4 +1,4 @@
-# Bingo Caller
+# Bingo Caller [![CI/CD](https://github.com/hattan/bingocaller/actions/workflows/azure-webapps-dotnet-core.yml/badge.svg)](https://github.com/hattan/bingocaller/actions/workflows/azure-webapps-dotnet-core.yml)
 
 A web application to help Bingo Callers and participants keep track of numbers!
 
