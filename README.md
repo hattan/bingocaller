@@ -1,6 +1,8 @@
-# Bingo Caller
+# Bingo Caller [![CI/CD](https://github.com/hattan/bingocaller/actions/workflows/azure-webapps-dotnet-core.yml/badge.svg)](https://github.com/hattan/bingocaller/actions/workflows/azure-webapps-dotnet-core.yml)
 
 A web application to help Bingo Callers and participants keep track of numbers!
+
+Deployed Version : https://stereobingo.azurewebsites.net/
 
 ## Requirements:
 
@@ -11,7 +13,8 @@ A web application to help Bingo Callers and participants keep track of numbers!
 
 - Create a dev certificate `dotnet dev-certs https`
 - Start the local server `dotnet watch run --project BingoCaller.csproj`
-  Note: Hot reload will be unabled and update the page automatically when a client side change is applied in vscode.
+
+  Note: Hot reload will be enabled and update the page automatically when a client side change is applied in vscode.
 
 ## Using the Site
 
