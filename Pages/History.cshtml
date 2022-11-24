@@ -1,27 +1,6 @@
 @page
 @model HistoryModel
 
-@{
-  string GetLetter(int number){
-    if(number <=15){
-      return "B";
-    }
-    else if(number>15 && number <= 30){
-      return "I";
-    } 
-    else if(number>30 && number <= 45){
-      return "N";
-    }
-     else if(number>45 && number <= 60){
-      return "G";
-     }
-     else if(number>60 && number <= 75){
-      return "O";
-     }
-     return "";
-  }
-}
-
 <style>
   .history-item {
     font-size: 30px;
@@ -50,19 +29,25 @@
   .history-letter-O {
     color: purple;
   }
+
+  .historyList{
+    margin-bottom:0px !important;
+    padding-bottom:0px !important;
+  }
 </style>
 
 <h1>History</h1>
 
 <p>Previously called numbers in this game:</p>
 
-<ul class="list-group mb-4">
-  @foreach(var number in Model.Numbers){
-    <li class="list-group-item history-item"> 
-      <span class="history-letter history-letter-@GetLetter(number.Value)">@GetLetter(number.Value)</span> 
-      <span class="history-value">@number.Value</span>
-    </li>
-  }
-</ul>
+<ul class="list-group mb-4 historyList" id="history-B"></ul>
+<ul class="list-group mb-4 historyList" id="history-I"></ul>
+<ul class="list-group mb-4 historyList" id="history-N"></ul>
+<ul class="list-group mb-4 historyList" id="history-G"></ul>
+<ul class="list-group mb-4 historyList" id="history-O"></ul>
 
 <div class="small">Note: This history is <em>only</em> for the current game, not previous games!</div>
+
+    @section Scripts {
+        <script src="~/js/history.js"></script>
+    }
