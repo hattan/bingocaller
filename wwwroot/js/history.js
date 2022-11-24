@@ -31,14 +31,22 @@ function numberCalled(number, status) {
     console.log(`MSG: NumberCalled ${number} - ${status}`);
     const letter = getLetter(number);
     const historyList = document.getElementById(`history-${letter}`);
-    var li = document.createElement("li");
-    li.classList.add("list-group-item");
-    li.classList.add("history-item");
-    li.innerHTML =`      
-        <span class="history-letter history-letter-${letter}">${letter}</span> 
-        <span class="history-value">${number}</span>
-    `;
-    historyList.appendChild(li);
+
+    if(status != "true"){
+        var li = document.createElement("li");
+        li.setAttribute("id",`number-${number}`)
+        li.classList.add("list-group-item");
+        li.classList.add("history-item");
+        li.innerHTML =`      
+            <span class="history-letter history-letter-${letter}">${letter}</span> 
+            <span class="history-value">${number}</span>
+        `;
+        historyList.appendChild(li);
+    }
+    else{
+        const item = document.getElementById(`number-${number}`);
+        historyList.removeChild(item);
+    }
 }
 
 connection.on("NewGame", clear);
