@@ -11,7 +11,7 @@ namespace BingoCaller.Data
         }
         public void Remove(Number num){
             var numbersToRemove = numbers.Where(n=>n.Value == num.Value);
-            foreach(var number in numbersToRemove){
+            foreach(var number in numbersToRemove.ToList()){
                 numbers.Remove(number);
             }
         }
