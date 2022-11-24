@@ -4,8 +4,12 @@ namespace BingoCaller.Data
     {
         public int Value { get; set; }
         public bool Status { get; set; }
-        public int CompareTo(Number num)
+        public int CompareTo(Number? num)
         {
+            if(num == null){
+                return 0;
+            }
+
             if (this.Value > num.Value)
             {
                 return 1;

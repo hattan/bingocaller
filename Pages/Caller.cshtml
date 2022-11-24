@@ -11,13 +11,21 @@
     <div class="row align-items-center mb-4">
         <div class="col">
             <h1 class="m-0">Caller!</h1>
-        </div>
+        </div>     
         <div class="col text-end">
             <button type="button" class="btn btn-primary" id="newGame">New Game</button>
         </div>
     </div>
 
     <partial name="_Board"/>
+
+    <div class="row align-items-center mb-4">
+        <div class="col text-end">
+            <br/>
+           <button type="button" class="btn btn-danger" id="logOut">Log Out</button>
+        </div>
+    </div>
+    
 
     @section Scripts {
         <script src="~/js/board.js"></script>
@@ -41,6 +49,11 @@
                     return console.error(err.toString());
                 });
             })
+
+            const logOut = document.getElementById("logOut");
+            logOut.addEventListener("click",function(){
+                window.location.href="/caller?logout=true";
+            });            
         </script>
     }
 }
