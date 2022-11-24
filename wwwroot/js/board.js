@@ -2,9 +2,9 @@
 
 function clearBoard(){
     console.log("MSG: NewGame");
-    let selectedNumbers=document.getElementsByTagName("td");
-    for(let i=0;i<selectedNumbers.length;i++){
-        selectedNumbers[i].classList.remove("selected");
+    let numbers=document.getElementsByClassName("number");
+    for(let i=0;i<numbers.length;i++){
+        numbers[i].classList.remove("selected");
     }
 }
 
