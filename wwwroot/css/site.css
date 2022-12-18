@@ -28,6 +28,15 @@ body {
    color: #FFFFFF;
 }
 
+.number.last {
+  border-color:#AF7AC5 !important;
+  border-width:thick !important ;
+}
+
+#last-called{
+  color:#AF7AC5 !important;
+  font-weight:bold;
+}
 @media (min-width: 576px) {
   .offcanvas {
     max-width: 100%;
